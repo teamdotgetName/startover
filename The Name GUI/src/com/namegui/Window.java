@@ -1,7 +1,6 @@
 package com.namegui;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
