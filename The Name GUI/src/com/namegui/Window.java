@@ -1,11 +1,17 @@
 package com.namegui;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Window {
 	private JFrame mainWindow;
 	
+	//The menu where we can click on the button to go to our name panels
+	private JPanel mainMenu;
+	
 	public Window(String name) {
+		this.mainMenu = new MainMenu();
+		
 		this.mainWindow = new JFrame(name);
 		this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.buildFrame();
@@ -16,7 +22,7 @@ public class Window {
 	
 	//add the components to the main frame, including the name panels
 	private void buildFrame() {
-		
+		this.mainWindow.getContentPane().add(this.mainMenu);
 	}
 	
 	public void run() {

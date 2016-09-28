@@ -22,6 +22,7 @@ public abstract class NamePanel extends JPanel {
 	
 	protected abstract void build();
 	
+	//to access the name label in subclasses (I didn't want to do protected because of encapsulation issues)
 	public JLabel getNameLabel() {
 		return this.name;
 	}
