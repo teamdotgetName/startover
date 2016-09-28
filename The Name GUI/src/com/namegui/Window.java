@@ -14,6 +14,7 @@ public class Window {
 		this.mainWindow.setLocationRelativeTo(null);
 	}
 	
+	//add the components to the main frame, including the name panels
 	private void buildFrame() {
 		
 	}
