@@ -1,13 +1,17 @@
 package com.namegui;
 
+import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class MainMenu extends JPanel {
 	private static final long serialVersionUID = -3277223080829135674L;
+	//for communication with the Window's frame
+	private Window window;
 	
 	//used to make the labels and buttons to create this main menu
 	private ArrayList<String> nameList;
@@ -21,7 +25,9 @@ public class MainMenu extends JPanel {
 	 * 	- add a label that tells who's name the panel is for
 	 *  - a button to go to that panel
 	 */
-	public MainMenu(ArrayList<NamePanel> nameList) {
+	public MainMenu(Window window, ArrayList<NamePanel> nameList) {
+		this.window = window;
+		
 		this.nameList = new ArrayList<>();
 		for (int i = 0; i < nameList.size(); ++i)
 			this.nameList.add(nameList.get(i).getName());
@@ -30,12 +36,48 @@ public class MainMenu extends JPanel {
 	
 	private void build() {
 		//create labels and buttons based off of the string list
+		for (String s: this.nameList) {
+			/*
+			 * Layout:
+			 *  each set (a name and a link button) will be fitted top to bottom using a JPanel with GridBagLayout.
+			 *  These JPanels will be layed out with the main menu's DEFAULT flow layout
+			 */
+			JPanel nameItem = new JPanel();
+			JLabel name = new JLabel(s);
+			JButton link = new JButton("Go to " + s);
+			
+			GridBagConstraints gbc = new GridBagConstraints();
+			nameItem.setLayout(new GridBagLayout());
+			
+			link.addActionListener(new GotoListener(s));
+			
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			
+			nameItem.add(name, gbc);
+			++gbc.gridy;
+			nameItem.add(link, gbc);
+			
+			this.add(nameItem);
+		}
 	}
 	
 	private class GotoListener implements ActionListener {
+		private String name;
+		
+		private GotoListener(String name) {
+			this.name = name;
+		}
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			//switch to the selected NamePanel's view
+			try {
+				NamePanel np = window.getPanelByName(this.name);
+				window.showView(np);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 }

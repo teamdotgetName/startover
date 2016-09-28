@@ -16,7 +16,7 @@ public class Window {
 	public Window(String name) {
 		this.nameList = new ArrayList<>();
 		this.createNameList();
-		this.mainMenu = new MainMenu(this.nameList);
+		this.mainMenu = new MainMenu(this, this.nameList);
 		
 		this.mainWindow = new JFrame(name);
 		this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +28,7 @@ public class Window {
 	
 	//ADD AN INSTANCE OF YOUR SUB-CLASS PANEL OF NAMEPANEL TO THE NAMELIST HERE
 	private void createNameList() {
-		
+		//example: this.nameList.add(new ExampleNamePanel(this, "Example"));
 	}
 	
 	//add the components to the main frame, including the name panels
@@ -42,6 +42,14 @@ public class Window {
 		this.mainWindow.getContentPane().remove(this.mainWindow.getContentPane().getComponent(0));
 		//2. add the new panel from the parameter
 		this.mainWindow.getContentPane().add(view, BorderLayout.CENTER);
+	}
+	
+	//finds a panel in the list with a matching name
+	public NamePanel getPanelByName(String name) throws Exception {
+		for (NamePanel p: this.nameList)
+			if (p.getName().equals(name))
+				return p;
+		throw new Exception("Could not find name in the list");
 	}
 	
 	//accessible to button listeners to go back to the main menu
