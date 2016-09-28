@@ -1,6 +1,7 @@
 package com.namegui;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -40,10 +41,12 @@ public class Window {
 	//changes the current panel being displayed
 	public void showView(JPanel view) {
 		//1. remove the panel that is being displayed (remove the only component from the frame --> the panel)
-		if (this.mainWindow.getContentPane().getComponentCount() > 0)
-			this.mainWindow.getContentPane().remove(this.mainWindow.getContentPane().getComponent(0));
+		this.mainWindow.getContentPane().removeAll();
 		//2. add the new panel from the parameter
 		this.mainWindow.getContentPane().add(view, BorderLayout.CENTER);
+		
+		this.mainWindow.getContentPane().repaint();
+		this.mainWindow.revalidate();
 	}
 	
 	//finds a panel in the list with a matching name

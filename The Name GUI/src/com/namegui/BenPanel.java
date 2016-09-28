@@ -1,6 +1,8 @@
 package com.namegui;
 
-import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 public class BenPanel extends NamePanel {
 	private static final long serialVersionUID = 8970392054558376728L;
@@ -11,8 +13,12 @@ public class BenPanel extends NamePanel {
 	
 	@Override
 	protected void build() {
-		this.setLayout(new BorderLayout());
-		this.add(this.getNameLabel(), BorderLayout.NORTH);
-		this.add(this.getBackButton(), BorderLayout.SOUTH);
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		
+		final int SPACE = 3;
+		gbc.insets = new Insets(SPACE, SPACE, SPACE, SPACE);
+		this.add(this.getNameLabel(), gbc);
+		this.add(this.getBackButton(), gbc);
 	}
 }

@@ -20,7 +20,7 @@ public abstract class NamePanel extends JPanel {
 		
 		//IN SUB-CLASSES: DO NOT ADD A STRING PARAMETER: just write super(your name as a String) in a constructor with no parameters
 		this.name = new JLabel(name);
-		this.back = new JButton();
+		this.back = new JButton("Back to Main Menu");
 		this.back.addActionListener(new BackListener());
 		this.build();
 	}
