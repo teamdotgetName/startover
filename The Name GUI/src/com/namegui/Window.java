@@ -39,7 +39,8 @@ public class Window {
 	//changes the current panel being displayed
 	public void showView(JPanel view) {
 		//1. remove the panel that is being displayed (remove the only component from the frame --> the panel)
-		this.mainWindow.getContentPane().remove(this.mainWindow.getContentPane().getComponent(0));
+		if (this.mainWindow.getContentPane().getComponentCount() > 0)
+			this.mainWindow.getContentPane().remove(this.mainWindow.getContentPane().getComponent(0));
 		//2. add the new panel from the parameter
 		this.mainWindow.getContentPane().add(view, BorderLayout.CENTER);
 	}

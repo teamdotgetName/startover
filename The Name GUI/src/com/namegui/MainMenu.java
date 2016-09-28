@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class MainMenu extends JPanel {
 	private static final long serialVersionUID = -3277223080829135674L;
@@ -35,12 +36,35 @@ public class MainMenu extends JPanel {
 	}
 	
 	private void build() {
+		/*
+		 * Main menu layout:
+		 * BorderLayout: using two panels: a panel for the title and a panel for the links
+		 * 
+		 * title:
+		 * FlowLayout, NORTH side of the main menu
+		 * 
+		 * link:
+		 * FlowLayout, CENTER of the main menu
+		 */
+		
+		this.setLayout(new BorderLayout());
+		JPanel titlePanel = new JPanel(),
+				linkPanel = new JPanel();
+		
+		//title
+		JLabel title = new JLabel("The List of Names:");
+		
+		//double the font size
+		title.setFont(title.getFont().deriveFont(title.getFont().getSize() * 2F));
+		
+		titlePanel.add(title);
+		
 		//create labels and buttons based off of the string list
 		for (String s: this.nameList) {
 			/*
 			 * Layout:
 			 *  each set (a name and a link button) will be fitted top to bottom using a JPanel with GridBagLayout.
-			 *  These JPanels will be layed out with the main menu's DEFAULT flow layout
+			 *  These JPanels will be layed out with the linkPanel's default flow layout
 			 */
 			JPanel nameItem = new JPanel();
 			JLabel name = new JLabel(s);
@@ -58,8 +82,11 @@ public class MainMenu extends JPanel {
 			++gbc.gridy;
 			nameItem.add(link, gbc);
 			
-			this.add(nameItem);
+			linkPanel.add(nameItem);
 		}
+		
+		this.add(titlePanel, BorderLayout.NORTH);
+		this.add(linkPanel, BorderLayout.CENTER);
 	}
 	
 	private class GotoListener implements ActionListener {
