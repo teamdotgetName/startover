@@ -1,13 +1,15 @@
 package com.namegui;
 
-import java.awt.*;
-
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class MainMenu extends JPanel {
 	private static final long serialVersionUID = -3277223080829135674L;
@@ -68,7 +70,7 @@ public class MainMenu extends JPanel {
 			 */
 			JPanel nameItem = new JPanel();
 			JLabel name = new JLabel(s);
-			JButton link = new JButton("Go to " + s);
+			JButton link = new JButton("Go to " + s + "'s Panel");
 			
 			GridBagConstraints gbc = new GridBagConstraints();
 			nameItem.setLayout(new GridBagLayout());

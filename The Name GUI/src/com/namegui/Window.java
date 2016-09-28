@@ -28,7 +28,8 @@ public class Window {
 	
 	//ADD AN INSTANCE OF YOUR SUB-CLASS PANEL OF NAMEPANEL TO THE NAMELIST HERE
 	private void createNameList() {
-		//example: this.nameList.add(new ExampleNamePanel(this, "Example"));
+		//example: this.nameList.add(new ExampleNamePanel(this));
+		this.nameList.add(new BenPanel(this));
 	}
 	
 	//add the components to the main frame, including the name panels

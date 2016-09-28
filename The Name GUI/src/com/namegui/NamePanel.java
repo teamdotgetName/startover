@@ -32,6 +32,12 @@ public abstract class NamePanel extends JPanel {
 		return this.name;
 	}
 	
+	//access the back button in the subclass
+	public JButton getBackButton() {
+		return this.back;
+	}
+	
+	//for the Window-to-MainMenu communication
 	public String getName() {
 		return this.name.getText();
 	}
