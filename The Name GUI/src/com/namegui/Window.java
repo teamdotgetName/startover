@@ -30,6 +30,7 @@ public class Window {
 	private void createNameList() {
 		//example: this.nameList.add(new ExampleNamePanel(this));
 		this.nameList.add(new BenPanel(this));
+		this.nameList.add(new TymanPanel(this));
 	}
 	
 	//add the components to the main frame, including the name panels
