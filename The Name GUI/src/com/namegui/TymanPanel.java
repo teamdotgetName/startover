@@ -11,7 +11,6 @@ public class TymanPanel extends NamePanel
 	public TymanPanel(Window window)
 	{
 		super(window ,"Tyman");
-		System.out.println(this.getNameLabel().getText());
 	}
 	
 	@Override
