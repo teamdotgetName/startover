@@ -32,6 +32,7 @@ public class Window {
 		this.nameList.add(new BenPanel(this));
 		this.nameList.add(new TymanPanel(this));
 		this.nameList.add(new MauricePanel(this));
+		this.nameList.add(new DustinPanel20(this));
 	}
 	
 	//add the components to the main frame, including the name panels
